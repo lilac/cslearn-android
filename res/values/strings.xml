@@ -3,5 +3,9 @@
 
     <string name="hello">Hello World, CSLearnActivity!</string>
     <string name="app_name">Cslearn-android</string>
+<<<<<<< HEAD
+=======
+    <string name="email_hint"></string>
+>>>>>>> 3f3672adc63ca0bf35ce32a1ec711ffd8087587b
 
 </resources>
