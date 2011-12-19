@@ -1,0 +1,21 @@
+#
+# generated on 2011/12/17 10:45:47
+#
+# --table-start--
+dataClass=org.ivyweb.android.cslearn.models.SimpleQuestion
+tableName=simplequestion
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=content
+indexName=simplequestion_content_idx
+# --field-end--
+# --field-start--
+fieldName=key
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
