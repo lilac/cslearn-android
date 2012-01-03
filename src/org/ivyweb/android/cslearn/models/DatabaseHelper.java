@@ -27,6 +27,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	// the DAO object we use to access the SimpleQuestion table
 	private Dao<SimpleQuestion, Integer> simpleDao = null;
 	private RuntimeExceptionDao<SimpleQuestion, Integer> simpleRuntimeDao = null;
+	
+	private Dao<User, Integer> userDao = null;
+	private RuntimeExceptionDao<User, Integer> userREDao = null;
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);
@@ -38,9 +41,13 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase db, ConnectionSource connectionSource) {
+		Class<?> classes[] = {SimpleQuestion.class, User.class, Choice.class, ChoiceQuestion.class};
 		try {
 			Log.i(DatabaseHelper.class.getName(), "onCreate");
-			TableUtils.createTable(connectionSource, SimpleQuestion.class);
+			for (Class<?> c : classes) {
+				TableUtils.createTable(connectionSource, c);
+			}
+			//TableUtils.createTable(connectionSource, SimpleQuestion.class);
 		} catch (SQLException e) {
 			Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
 			throw new RuntimeException(e);
@@ -52,6 +59,8 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		// create some entries in the onCreate
 		SimpleQuestion simple = new SimpleQuestion("Test question", "Test answer");
 		dao.create(simple);
+		User admin = new User("admin", "admin");
+		getUserREDao().createIfNotExists(admin);
 		Log.i(DatabaseHelper.class.getName(), "created new entries in onCreate: " + millis);
 	}
 
@@ -94,6 +103,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		return simpleRuntimeDao;
 	}
 
+	public RuntimeExceptionDao<User, Integer> getUserREDao() {
+		if (userREDao == null) {
+			userREDao = getRuntimeExceptionDao(User.class);
+		}
+		return userREDao;
+	}
 	/**
 	 * Close the database connections and clear any cached DAOs.
 	 */

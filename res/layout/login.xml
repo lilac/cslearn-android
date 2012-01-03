@@ -8,8 +8,7 @@
         android:id="@+id/tableLayout1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="2"
-        >
+        android:stretchColumns="2" >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -24,37 +23,47 @@
                 android:id="@+id/et_email"
                 android:layout_column="2"
                 android:hint="@string/email_hint"
-                android:inputType="textEmailAddress"
-                >
+                android:inputType="textEmailAddress" >
 
                 <requestFocus />
             </EditText>
-
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
+
             <TextView
                 android:id="@+id/tv_passwd"
-                android:text="password:" 
-				/>
+                android:text="password:" />
+
             <EditText
                 android:id="@+id/et_passwd"
-                android:inputType="textPassword" 
-                android:layout_column="2"/>
-            
+                android:layout_column="2"
+                android:inputType="textPassword" />
         </TableRow>
-
-
     </TableLayout>
 
-    <Button
-        android:id="@+id/btn_login"
+    <RelativeLayout
+        android:id="@+id/buttons"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Login" />
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btn_login_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Login as root" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Login" />
+
+    </RelativeLayout>
 
 </LinearLayout>

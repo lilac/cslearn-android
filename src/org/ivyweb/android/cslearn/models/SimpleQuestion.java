@@ -6,10 +6,10 @@ public class SimpleQuestion {
 
 	@DatabaseField(generatedId = true)
 	int id;
-	@DatabaseField(index = true)
+	@DatabaseField(canBeNull = false)
 	String content;
 	
-	@DatabaseField
+	@DatabaseField(canBeNull = false)
 	String key;
 
 	SimpleQuestion() {}
