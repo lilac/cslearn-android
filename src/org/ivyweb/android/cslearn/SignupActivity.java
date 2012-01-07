@@ -39,8 +39,8 @@ public class SignupActivity extends DatabaseActivity {
 	private boolean newUser(String mail, String passwd) {
 		User user = new User(mail, passwd);
 		RuntimeExceptionDao<User, Integer> userDao = getHelper().getUserREDao();
-		List<User> matches = userDao.queryForEq("mail", mail);
-		if (!matches.isEmpty()) {
+		List<User> matches = userDao.queryForEq("email", mail);
+		if (matches.isEmpty()) {
 			int id = userDao.create(user);
 			if (id > 0) return true;
 		}

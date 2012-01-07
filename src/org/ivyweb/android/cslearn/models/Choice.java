@@ -12,12 +12,16 @@ public class Choice {
 	@DatabaseField(canBeNull = false)
 	boolean isRight;
 	
+	@DatabaseField(canBeNull = false, foreign = true)
+	ChoiceQuestion question;
+	
 	public Choice() {}
 
-	public Choice(String content, boolean isRight) {
+	public Choice(String content, boolean isRight, ChoiceQuestion question) {
 		super();
 		this.content = content;
 		this.isRight = isRight;
+		this.question = question;
 	}
 
 	public String getContent() {
@@ -38,6 +42,10 @@ public class Choice {
 
 	public int getId() {
 		return id;
+	}
+	
+	public ChoiceQuestion getQuestion() {
+		return this.question;
 	}
 	
 }
